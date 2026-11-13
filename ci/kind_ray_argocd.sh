@@ -69,7 +69,19 @@ for _ in $(seq 1 40); do
   sleep 15
 done
 
-logs="$(kubectl logs -n bushfire -l ray.io/node-type=head --tail=300 2>/dev/null || true)"
+# The head container logs the Ray runtime, not the driver. The marker is in the
+# submitter pod, or in the session job-driver log on the head.
+logs="$(
+  kubectl get pods -n bushfire -o name 2>/dev/null | while read -r pod; do
+    echo "===== ${pod} ====="
+    kubectl logs -n bushfire "${pod#pod/}" --all-containers --tail=400 2>/dev/null || true
+  done
+)"
+head_pod="$(kubectl get pods -n bushfire -l ray.io/node-type=head -o jsonpath='{.items[0].metadata.name}' 2>/dev/null || true)"
+if [[ -n "${head_pod}" ]]; then
+  driver="$(kubectl exec -n bushfire "${head_pod}" -- sh -c 'grep -R "RAYJOB_OK" /tmp/ray/session_latest/logs 2>/dev/null || true' 2>/dev/null || true)"
+  logs="${logs}"$'\n'"${driver}"
+fi
 echo "${logs}"
 if [[ "${job_status}" != "SUCCEEDED" ]] || ! grep -q "RAYJOB_OK" <<<"${logs}"; then
   echo "RayJob did not succeed"
