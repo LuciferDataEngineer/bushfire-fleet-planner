@@ -55,3 +55,37 @@ def test_copy_avoids_tool_names():
     blob = str(build_copy(_facts())).lower()
     for word in ("sedona", "duckdb", "spark", "or-tools", "ffdi", "mcarthur", "kubernetes", "monte carlo"):
         assert word not in blob
+
+
+def test_long_region_names_stay_whole_on_kpi_cards():
+    facts = _facts(
+        worst_region={"name": "Western Australia - Outback (South)", "severe_days": 90.2},
+        top_plan_region={"name": "Northern Territory - Outback"},
+        busiest_heat_region={"name": "Queensland - Outback", "state": "Qld", "heat": 3394},
+    )
+    copy = build_copy(facts)
+    worst = next(item for item in copy["risk"]["kpis"] if item["label"] == "Worst fire-weather region")
+    assert worst["value"] == "WA Outback (South)"
+    assert worst["detail"] == (
+        "Western Australia - Outback (South). "
+        "90.2 dangerous days a year, on average, from 2022 to 2025."
+    )
+    plan = next(item for item in copy["where"]["kpis"] if item["label"] == "Highest planning priority")
+    assert plan["value"] == "NT Outback"
+    assert plan["detail"].startswith("Northern Territory - Outback. ")
+    busy = next(item for item in copy["week"]["kpis"] if item["label"] == "Busiest region")
+    assert busy["value"] == "Qld Outback"
+    assert "Queensland - Outback" in busy["detail"]
+    assert "3,394" in busy["detail"]
+    for page in copy.values():
+        for kpi in page["kpis"]:
+            assert "…" not in kpi["value"]
+            assert "..." not in kpi["value"]
+
+
+def test_region_names_without_a_state_prefix_are_not_rewritten():
+    facts = _facts(worst_region={"name": "Far West and Orana", "severe_days": 17.5})
+    worst = next(item for item in build_copy(facts)["risk"]["kpis"] if item["label"] == "Worst fire-weather region")
+    assert worst["value"] == "Far West and Orana"
+    assert worst["detail"] == "17.5 dangerous days a year, on average, from 2022 to 2025."
+    assert "…" not in worst["value"]

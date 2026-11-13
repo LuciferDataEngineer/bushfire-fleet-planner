@@ -39,6 +39,32 @@ def test_each_page_has_three_to_five_kpis_and_at_most_three_visible_charts():
         assert 1 <= visible <= 3, name
 
 
+def test_kpi_values_are_not_truncated():
+    """A KPI headline must be the whole value. An ellipsis, in the text or in CSS, is a failure."""
+    css = (SITE / "assets" / "style.css").read_text()
+    value_css = "\n".join(re.findall(r"\.kpi \.value[^{]*\{([^}]*)\}", css))
+    assert value_css, "KPI value style is missing"
+    assert "ellipsis" not in value_css
+    assert "nowrap" not in value_css
+    assert "line-clamp" not in value_css
+    for name in PAGES:
+        text = (SITE / name).read_text()
+        values = re.findall(r'<div class="value[^"]*">(.*?)</div>', text)
+        assert values, name
+        for value in values:
+            assert "…" not in value, f"{name}: {value}"
+            assert "..." not in value, f"{name}: {value}"
+            assert not value.endswith("-"), f"{name}: {value}"
+
+
+def test_pages_declare_an_icon_without_a_favicon_request():
+    for name in PAGES:
+        text = (SITE / name).read_text()
+        assert 'rel="icon"' in text
+        assert "data:image/svg+xml" in text
+        assert "favicon.ico" not in text
+
+
 def test_chart_labels_sit_inside_the_viewbox():
     for name in PAGES:
         for view_box, texts in _svgs((SITE / name).read_text()):
