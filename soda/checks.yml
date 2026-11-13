@@ -1,0 +1,38 @@
+checks for gold_region_risk:
+  - row_count > 50
+  - missing_count(sa4_code) = 0
+  - duplicate_count(sa4_code) = 0
+  - min(population) >= 0
+  - min(severe_days_per_year) >= 0
+  - max(weight) > 0
+
+checks for gold_placement:
+  - row_count = 12
+  - missing_count(ident) = 0
+  - missing_count(scenario) = 0
+
+checks for gold_hotspot_event:
+  - row_count > 100
+  - missing_count(sa4_code) = 0
+  - min(n_detections) > 0
+
+checks for gold_fire_weather_day:
+  - row_count > 1000
+  - missing_count(sa4_code) = 0
+  - missing_count(ffdi) = 0
+  - min(ffdi) >= 0
+  - min(drought_factor) >= 1
+  - max(drought_factor) <= 10
+
+checks for gold_coverage_summary:
+  - row_count = 4
+  - min(people_pct) >= 0
+  - max(people_pct) <= 100
+  - min(heat_pct) >= 0
+  - max(heat_pct) <= 100
+
+checks for gold_simulation:
+  - row_count > 50
+  - missing_count(sa4_code) = 0
+  - min(severe_days_uniform) >= 0
+  - min(severe_days_hotter) >= 0

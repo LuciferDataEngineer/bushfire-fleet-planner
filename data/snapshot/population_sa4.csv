@@ -1,0 +1,90 @@
+sa4_code,sa4_name,state_code,state_name,gccsa_code,gccsa_name,erp_2025
+101,Capital Region,1,New South Wales,1RNSW,Rest of NSW,248376
+102,Central Coast,1,New South Wales,1GSYD,Greater Sydney,357816
+103,Central West,1,New South Wales,1RNSW,Rest of NSW,216979
+104,Coffs Harbour - Grafton,1,New South Wales,1RNSW,Rest of NSW,152331
+105,Far West and Orana,1,New South Wales,1RNSW,Rest of NSW,118372
+106,Hunter Valley exc Newcastle,1,New South Wales,1RNSW,Rest of NSW,316250
+107,Illawarra,1,New South Wales,1RNSW,Rest of NSW,330469
+108,Mid North Coast,1,New South Wales,1RNSW,Rest of NSW,239566
+109,Murray,1,New South Wales,1RNSW,Rest of NSW,130078
+110,New England and North West,1,New South Wales,1RNSW,Rest of NSW,191401
+111,Newcastle and Lake Macquarie,1,New South Wales,1RNSW,Rest of NSW,412359
+112,Richmond - Tweed,1,New South Wales,1RNSW,Rest of NSW,265824
+113,Riverina,1,New South Wales,1RNSW,Rest of NSW,166404
+114,Southern Highlands and Shoalhaven,1,New South Wales,1RNSW,Rest of NSW,165285
+115,Sydney - Baulkham Hills and Hawkesbury,1,New South Wales,1GSYD,Greater Sydney,295667
+116,Sydney - Blacktown,1,New South Wales,1GSYD,Greater Sydney,452374
+117,Sydney - City and Inner South,1,New South Wales,1GSYD,Greater Sydney,369674
+118,Sydney - Eastern Suburbs,1,New South Wales,1GSYD,Greater Sydney,280449
+119,Sydney - Inner South West,1,New South Wales,1GSYD,Greater Sydney,642157
+120,Sydney - Inner West,1,New South Wales,1GSYD,Greater Sydney,324297
+121,Sydney - North Sydney and Hornsby,1,New South Wales,1GSYD,Greater Sydney,447312
+122,Sydney - Northern Beaches,1,New South Wales,1GSYD,Greater Sydney,272656
+123,Sydney - Outer South West,1,New South Wales,1GSYD,Greater Sydney,323758
+124,Sydney - Outer West and Blue Mountains,1,New South Wales,1GSYD,Greater Sydney,350649
+125,Sydney - Parramatta,1,New South Wales,1GSYD,Greater Sydney,535540
+126,Sydney - Ryde,1,New South Wales,1GSYD,Greater Sydney,218606
+127,Sydney - South West,1,New South Wales,1GSYD,Greater Sydney,527701
+128,Sydney - Sutherland,1,New South Wales,1GSYD,Greater Sydney,240174
+201,Ballarat,2,Victoria,2RVIC,Rest of Vic.,184285
+202,Bendigo,2,Victoria,2RVIC,Rest of Vic.,173769
+203,Geelong,2,Victoria,2RVIC,Rest of Vic.,355990
+204,Hume,2,Victoria,2RVIC,Rest of Vic.,189765
+205,Latrobe - Gippsland,2,Victoria,2RVIC,Rest of Vic.,313733
+206,Melbourne - Inner,2,Victoria,2GMEL,Greater Melbourne,713493
+207,Melbourne - Inner East,2,Victoria,2GMEL,Greater Melbourne,405012
+208,Melbourne - Inner South,2,Victoria,2GMEL,Greater Melbourne,454338
+209,Melbourne - North East,2,Victoria,2GMEL,Greater Melbourne,596605
+210,Melbourne - North West,2,Victoria,2GMEL,Greater Melbourne,473116
+211,Melbourne - Outer East,2,Victoria,2GMEL,Greater Melbourne,536368
+212,Melbourne - South East,2,Victoria,2GMEL,Greater Melbourne,958772
+213,Melbourne - West,2,Victoria,2GMEL,Greater Melbourne,980300
+214,Mornington Peninsula,2,Victoria,2GMEL,Greater Melbourne,317586
+215,North West,2,Victoria,2RVIC,Rest of Vic.,153762
+216,Shepparton,2,Victoria,2RVIC,Rest of Vic.,138645
+217,Warrnambool and South West,2,Victoria,2RVIC,Rest of Vic.,128320
+301,Brisbane - East,3,Queensland,3GBRI,Greater Brisbane,258510
+302,Brisbane - North,3,Queensland,3GBRI,Greater Brisbane,244037
+303,Brisbane - South,3,Queensland,3GBRI,Greater Brisbane,412436
+304,Brisbane - West,3,Queensland,3GBRI,Greater Brisbane,204443
+305,Brisbane Inner City,3,Queensland,3GBRI,Greater Brisbane,335571
+306,Cairns,3,Queensland,3RQLD,Rest of Qld,271408
+307,Darling Downs - Maranoa,3,Queensland,3RQLD,Rest of Qld,134169
+308,Central Queensland,3,Queensland,3RQLD,Rest of Qld,244220
+309,Gold Coast,3,Queensland,3RQLD,Rest of Qld,708085
+310,Ipswich,3,Queensland,3GBRI,Greater Brisbane,419370
+311,Logan - Beaudesert,3,Queensland,3GBRI,Greater Brisbane,420157
+312,Mackay - Isaac - Whitsunday,3,Queensland,3RQLD,Rest of Qld,193813
+313,Moreton Bay - North,3,Queensland,3GBRI,Greater Brisbane,300041
+314,Moreton Bay - South,3,Queensland,3GBRI,Greater Brisbane,238959
+315,Queensland - Outback,3,Queensland,3RQLD,Rest of Qld,82563
+316,Sunshine Coast,3,Queensland,3RQLD,Rest of Qld,441508
+317,Toowoomba,3,Queensland,3RQLD,Rest of Qld,175707
+318,Townsville,3,Queensland,3RQLD,Rest of Qld,249097
+319,Wide Bay,3,Queensland,3RQLD,Rest of Qld,335670
+401,Adelaide - Central and Hills,4,South Australia,4GADE,Greater Adelaide,338950
+402,Adelaide - North,4,South Australia,4GADE,Greater Adelaide,492185
+403,Adelaide - South,4,South Australia,4GADE,Greater Adelaide,396764
+404,Adelaide - West,4,South Australia,4GADE,Greater Adelaide,263116
+405,Barossa - Yorke - Mid North,4,South Australia,4RSAU,Rest of SA,120651
+406,South Australia - Outback,4,South Australia,4RSAU,Rest of SA,85925
+407,South Australia - South East,4,South Australia,4RSAU,Rest of SA,205074
+501,Bunbury,5,Western Australia,5RWAU,Rest of WA,210962
+502,Mandurah,5,Western Australia,5GPER,Greater Perth,127502
+503,Perth - Inner,5,Western Australia,5GPER,Greater Perth,212390
+504,Perth - North East,5,Western Australia,5GPER,Greater Perth,324644
+505,Perth - North West,5,Western Australia,5GPER,Greater Perth,657092
+506,Perth - South East,5,Western Australia,5GPER,Greater Perth,611748
+507,Perth - South West,5,Western Australia,5GPER,Greater Perth,519389
+509,Western Australia - Wheat Belt,5,Western Australia,5RWAU,Rest of WA,149617
+510,Western Australia - Outback (North),5,Western Australia,5RWAU,Rest of WA,102732
+511,Western Australia - Outback (South),5,Western Australia,5RWAU,Rest of WA,128306
+601,Hobart,6,Tasmania,6GHOB,Greater Hobart,255250
+602,Launceston and North East,6,Tasmania,6RTAS,Rest of Tas.,156393
+603,South East,6,Tasmania,6RTAS,Rest of Tas.,44527
+604,West and North West,6,Tasmania,6RTAS,Rest of Tas.,120091
+701,Darwin,7,Northern Territory,7GDAR,Greater Darwin,159284
+702,Northern Territory - Outback,7,Northern Territory,7RNTE,Rest of NT,105272
+801,Australian Capital Territory,8,Australian Capital Territory,8ACTE,Australian Capital Territory,484630
+901,Other Territories,9,Other Territories,9OTER,Other Territories,5013

@@ -1,0 +1,3 @@
+data_source fleet:
+  type: duckdb
+  path: outputs/fleet.duckdb

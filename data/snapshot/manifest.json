@@ -1,0 +1,92 @@
+{
+  "name": "bushfire-fleet-planner snapshot",
+  "accessed_at_utc": "2026-11-13T22:33:03Z",
+  "accessed_at_aedt": "14 November 2026, 9:33 am AEDT",
+  "tz_label": "AEDT",
+  "hotspot_min_utc": "2026-11-10T21:57:19Z",
+  "hotspot_max_utc": "2026-11-13T21:37:47Z",
+  "forecast_start": "2026-11-14",
+  "forecast_end": "2026-11-20",
+  "archive_start": "2021-01-01",
+  "archive_end": "2026-11-13",
+  "files": [
+    {
+      "path": "sa4_boundaries.geojson",
+      "sha256": "0caffb6504ac6e99cfe76bb006c66a8ebd139f504d0133f57ff75651bbf24a7c",
+      "bytes": 746375,
+      "rows": 108,
+      "publisher": "Australian Bureau of Statistics",
+      "title": "ASGS Edition 3 SA4 generalised boundaries, 2021",
+      "source_url": "https://geo.abs.gov.au/arcgis/rest/services/ASGS2021/SA4/MapServer/1/query?where=1%3D1&outFields=sa4_code_2021,sa4_name_2021,gccsa_code_2021,gccsa_name_2021,state_code_2021,state_name_2021,area_albers_sqkm&returnGeometry=true&outSR=4326&f=geojson&geometryPrecision=4&maxAllowableOffset=0.02",
+      "licence": "CC BY 4.0",
+      "note": "SA4_GEN from the ABS ArcGIS service with maxAllowableOffset=0.02 degrees and geometryPrecision=4. Migratory and no-usual-address codes have null geometry in the service and are kept as empty features."
+    },
+    {
+      "path": "sa4_points.geojson",
+      "sha256": "942965dc4b49a19e6f4c0b3205e4cf531666e7ab9043ca1a16da4e39f7a47802",
+      "bytes": 22499,
+      "rows": 108,
+      "publisher": "Australian Bureau of Statistics",
+      "title": "ASGS Edition 3 SA4 representative points, 2021",
+      "source_url": "https://geo.abs.gov.au/arcgis/rest/services/ASGS2021/SA4/MapServer/2/query?where=1%3D1&outFields=sa4_code_2021,sa4_name_2021,state_name_2021&returnGeometry=true&outSR=4326&f=geojson",
+      "licence": "CC BY 4.0",
+      "note": "Official representative point for each SA4, used as the place an aircraft has to reach."
+    },
+    {
+      "path": "population_sa4.csv",
+      "sha256": "1f6f98750126d6027cb22a8dd48a41e82a22d6ac711b2587008c1faa5cc73861",
+      "bytes": 6087,
+      "rows": 89,
+      "publisher": "Australian Bureau of Statistics",
+      "title": "Regional population, 2024\u201325, ERP by SA4 at 30 June 2025",
+      "source_url": "https://www.abs.gov.au/statistics/people/population/regional-population/2024-25/32180DS0003_2001-25.xlsx",
+      "licence": "CC BY 4.0",
+      "note": "Table 3 of Population estimates by SA2 and above, 2001 to 2025. The 2025 estimates are preliminary."
+    },
+    {
+      "path": "airports.csv",
+      "sha256": "cea7be2856e71d93e33f9da126f87d1562c34e6cb7642ea0afb5c5e61bc4765f",
+      "bytes": 5962,
+      "rows": 63,
+      "publisher": "OurAirports",
+      "title": "Airports and runways",
+      "source_url": "https://davidmegginson.github.io/ourairports-data/airports.csv",
+      "licence": "Public domain",
+      "note": "Runways from https://davidmegginson.github.io/ourairports-data/runways.csv. Candidates: Australia, large or medium airport, paved runway at least 1,800 m, and scheduled service or a large airport or a RAAF name, plus YPTN and YSNW."
+    },
+    {
+      "path": "hotspots.parquet",
+      "sha256": "724e5e294d10090f48932d6547552d7cddbe8ac894de1adcf3ca2b936f7d2eef",
+      "bytes": 2020403,
+      "rows": 115393,
+      "publisher": "Geoscience Australia",
+      "title": "Digital Earth Australia Hotspots, recent feed",
+      "source_url": "https://hotspots.dea.ga.gov.au/data/recent-hotspots.json",
+      "licence": "CC BY 4.0",
+      "note": "Confidence at least 80 and inside longitude 112.0\u2013154.0, latitude -44.5\u2013-10.0. Raw feed had 177798 features; 115393 passed the filter. Satellites: {'AQUA': 582, 'HIMAWARI-9': 43202, 'NOAA 20': 35281, 'NOAA 21': 36328}."
+    },
+    {
+      "path": "weather_daily.parquet",
+      "sha256": "12a868916782d5fa9e18de7cc233818b2d51ae19b80e65862d8b95115188841b",
+      "bytes": 887795,
+      "rows": 188584,
+      "publisher": "Open-Meteo",
+      "title": "Historical daily weather at SA4 representative points",
+      "source_url": "https://archive-api.open-meteo.com/v1/archive",
+      "licence": "CC BY 4.0",
+      "note": "Daily maximum temperature, minimum relative humidity, maximum wind and precipitation, timezone=auto, 2021-01-01 to 2026-11-13. Default archive model."
+    },
+    {
+      "path": "weather_forecast.parquet",
+      "sha256": "1fcdc910fadfccfd7ab6bd70df88b82fc7a550580bd0f4ac35e25dfc043563c3",
+      "bytes": 9845,
+      "rows": 616,
+      "publisher": "Open-Meteo",
+      "title": "Week-ahead daily forecast at SA4 representative points",
+      "source_url": "https://api.open-meteo.com/v1/forecast",
+      "licence": "CC BY 4.0",
+      "note": "Same daily variables, timezone=auto, 2026-11-14 to 2026-11-20, captured with this snapshot."
+    }
+  ],
+  "historical_hotspots_note": "The DEA product description points at a historic archive under https://hotspots.dea.ga.gov.au/files/historic (all-data-csv.zip and related files) and at WFS. On 13 November 2026, WFS GetCapabilities listed only recent layers (public:hotspots, public:hotspots_three_days, satellite-pass layers). GetFeature requests returned no bytes before timing out. The advertised zip URLs returned the website HTML shell (about 12 KB), not an archive. The public ga-sentinel bucket listing contains raw satellite granules, not the hotspot table. Historical fire activity in this project is therefore the fire-weather record. Satellite heat is the recent feed only."
+}
