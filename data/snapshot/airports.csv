@@ -1,0 +1,64 @@
+ident,name,municipality,type,latitude,longitude,icao,scheduled_service,runway_m,iso_region
+AU-0539,Western Sydney International (Nancy-Bird Walton) Airport,Sydney,large_airport,-33.88346,150.71298,YSWS,yes,3700,AU-NSW
+YABA,Albany Airport,Albany,medium_airport,-34.94333,117.80889,YABA,yes,1800,AU-WA
+YAMB,RAAF Base Amberley,,medium_airport,-27.63538,152.71122,YAMB,no,3047,AU-QLD
+YAYE,Ayers Rock Connellan Airport,Yulara,medium_airport,-25.18591,130.97703,YAYE,yes,2599,AU-NT
+YBAS,Alice Springs Airport,Alice Springs,medium_airport,-23.80659,133.90343,YBAS,yes,2438,AU-NT
+YBBN,Brisbane International Airport,Brisbane,large_airport,-27.3842,153.117,YBBN,yes,3560,AU-QLD
+YBCG,Gold Coast Airport,Gold Coast,large_airport,-28.16596,153.50664,YBCG,yes,2492,AU-QLD
+YBCS,Cairns International Airport,Cairns,large_airport,-16.87892,145.74948,YBCS,yes,3197,AU-QLD
+YBHI,Broken Hill Airport,Broken Hill,medium_airport,-32.0014,141.472,YBHI,yes,2515,AU-NSW
+YBKE,Bourke Airport,,medium_airport,-30.0392,145.952,YBKE,yes,1830,AU-NSW
+YBMA,Mount Isa Airport,Mount Isa,medium_airport,-20.66638,139.48847,YBMA,yes,2560,AU-QLD
+YBMK,Mackay Airport,Mackay,medium_airport,-21.17082,149.18259,YBMK,yes,1981,AU-QLD
+YBNA,Ballina Byron Gateway Airport,Ballina,medium_airport,-28.83324,153.56147,YBNA,yes,1900,AU-NSW
+YBPN,Proserpine Whitsunday Coast Airport,Proserpine,medium_airport,-20.49442,148.55358,YBPN,yes,2073,AU-QLD
+YBRK,Rockhampton Airport,Rockhampton,medium_airport,-23.38002,150.47536,YBRK,yes,2628,AU-QLD
+YBRM,Broome International Airport,Broome,large_airport,-17.94919,122.2283,YBRM,yes,2404,AU-WA
+YBSU,Sunshine Coast Airport,Maroochydore,large_airport,-26.59332,153.08319,YBSU,yes,2800,AU-QLD
+YBTL,Townsville Airport / RAAF Base Townsville,Townsville,medium_airport,-19.2529,146.76651,YBTL,yes,2438,AU-QLD
+YBUD,Bundaberg Airport,Bundaberg,medium_airport,-24.90504,152.32261,YBUD,yes,2000,AU-QLD
+YBWW,Toowoomba Wellcamp Airport,Toowoomba,large_airport,-27.55833,151.79334,YBWW,yes,2870,AU-QLD
+YCCY,Cloncurry Airport,Cloncurry,medium_airport,-20.6686,140.504,YCCY,yes,2000,AU-QLD
+YCFS,Coffs Harbour Airport,Coffs Harbour,medium_airport,-30.3206,153.116,YCFS,yes,2080,AU-NSW
+YCIN,RAAF Base Curtin,Derby,medium_airport,-17.58139,123.82833,YCIN,no,3049,AU-WA
+YCOM,Cooma Snowy Mountains Airport,Cooma,medium_airport,-36.30045,148.97241,YCOM,yes,2120,AU-NSW
+YDPO,Devonport Airport,Devonport,medium_airport,-41.1697,146.42999,YDPO,yes,1838,AU-TAS
+YEML,Emerald Airport,Emerald,medium_airport,-23.5675,148.179,YEML,yes,1900,AU-QLD
+YGEL,Geraldton Airport,Moonyoonooka,medium_airport,-28.7961,114.707,YGEL,yes,2389,AU-WA
+YGTE,Groote Eylandt Airport,Groote Eylandt,medium_airport,-13.97241,136.45855,YGTE,yes,1901,AU-NT
+YHBA,Hervey Bay Airport,Hervey Bay,medium_airport,-25.32013,152.88066,YHBA,yes,2000,AU-QLD
+YLEO,Leonora Airport,Leonora,medium_airport,-28.8781,121.315,YLEO,yes,2018,AU-WA
+YLRE,Longreach Airport,Longreach,medium_airport,-23.43202,144.27749,YLRE,yes,1936,AU-QLD
+YLST,Leinster Airport,,medium_airport,-27.8433,120.703,YLST,yes,1800,AU-WA
+YMAV,Melbourne Avalon International Airport,Geelong/Melbourne,large_airport,-38.04027,144.4672,YMAV,yes,3048,AU-VIC
+YMAY,Albury Airport,East Albury,medium_airport,-36.06676,146.95915,YMAY,yes,1900,AU-NSW
+YMEK,Meekatharra Airport,,medium_airport,-26.6117,118.548,YMEK,yes,2181,AU-WA
+YMEN,Melbourne Essendon Airport,Essendon Fields,medium_airport,-37.7281,144.90199,YMEN,yes,1921,AU-VIC
+YMES,RAAF Base East Sale,,medium_airport,-38.0989,147.149,,no,2437,AU-VIC
+YMHB,Hobart International Airport,Hobart (Cambridge),large_airport,-42.83703,147.51302,YMHB,yes,2727,AU-TAS
+YMIA,Mildura Airport,Mildura,medium_airport,-34.2292,142.086,YMIA,yes,1830,AU-VIC
+YMLT,Launceston Airport,Launceston (Western Junction),medium_airport,-41.54494,147.21078,YMLT,yes,1981,AU-TAS
+YMML,Melbourne Airport,Melbourne,large_airport,-37.67073,144.8379,YMML,yes,3657,AU-VIC
+YNWN,Newman Airport,Newman,medium_airport,-23.4178,119.803,YNWN,yes,2072,AU-WA
+YPAD,Adelaide International Airport,Adelaide,large_airport,-34.94751,138.53339,YPAD,yes,3100,AU-SA
+YPBO,Paraburdoo Airport,Paraburdoo,medium_airport,-23.1711,117.745,YPBO,yes,2132,AU-WA
+YPDN,Darwin International Airport / RAAF Darwin,Darwin,large_airport,-12.41497,130.88185,YPDN,yes,3354,AU-NT
+YPEA,RAAF Base Pearce,Bullsbrook,medium_airport,-31.6678,116.015,,no,2439,AU-WA
+YPED,RAAF Base Edinburgh,Adelaide,medium_airport,-34.70571,138.61556,YPED,no,2560,AU-SA
+YPGV,Gove Airport,Nhulunbuy,medium_airport,-12.2694,136.81799,YPGV,yes,2208,AU-NT
+YPKA,Karratha Airport,Karratha,medium_airport,-20.7122,116.773,YPKA,yes,2280,AU-WA
+YPKG,Kalgoorlie Boulder Airport,Broadwood,medium_airport,-30.79154,121.46459,YPKG,yes,2000,AU-WA
+YPKU,East Kimberley Regional (Kununurra) Airport,Kununurra,medium_airport,-15.7781,128.70799,YPKU,yes,1829,AU-WA
+YPLM,Learmonth Airport,Exmouth,medium_airport,-22.2352,114.09002,YPLM,yes,3047,AU-WA
+YPPD,Port Hedland International Airport,Port Hedland,large_airport,-20.38279,118.62979,YPPD,yes,2500,AU-WA
+YPPH,Perth International Airport,Perth,large_airport,-31.9403,115.967,YPPH,yes,3444,AU-WA
+YPTN,Tindal Airport,,medium_airport,-14.5211,132.37801,YPTN,no,2744,AU-NT
+YSCB,Canberra Airport,Canberra,medium_airport,-35.3069,149.19501,YSCB,yes,3283,AU-ACT
+YSNW,Naval Air Station Nowra - HMAS Albatross,Nowra Hill,medium_airport,-34.9466,150.54245,YSNW,no,2094,AU-NSW
+YSRI,RAAF Base Richmond,Richmond,medium_airport,-33.60465,150.78305,YSRI,no,2134,AU-NSW
+YSSY,Sydney Kingsford Smith International Airport,Sydney (Mascot),large_airport,-33.9461,151.177,YSSY,yes,3962,AU-NSW
+YSTW,Tamworth Airport,Tamworth,medium_airport,-31.0779,150.84548,YSTW,yes,2200,AU-NSW
+YTNK,Tennant Creek Airport,Tennant Creek,medium_airport,-19.6344,134.183,YTNK,yes,1959,AU-NT
+YWLM,Newcastle Airport,Williamtown,large_airport,-32.79611,151.83503,YWLM,yes,3058,AU-NSW
+YWLU,Wiluna Airport,,medium_airport,-26.63269,120.22191,YWLU,yes,1811,AU-WA

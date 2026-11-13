@@ -1,0 +1,120 @@
+apiVersion: ray.io/v1
+kind: RayJob
+metadata:
+  name: fire-season-sim
+  namespace: bushfire
+spec:
+  entrypoint: python /opt/sim/sim.py
+  shutdownAfterJobFinishes: true
+  ttlSecondsAfterFinished: 600
+  backoffLimit: 0
+  rayClusterSpec:
+    rayVersion: "2.40.0"
+    headGroupSpec:
+      rayStartParams:
+        dashboard-host: "0.0.0.0"
+        num-cpus: "1"
+      template:
+        spec:
+          containers:
+            - name: ray-head
+              image: rayproject/ray:2.40.0-py312-cpu
+              imagePullPolicy: IfNotPresent
+              env:
+                - name: SEED
+                  value: "15"
+                - name: N_SEASONS
+                  value: "12"
+                - name: SEASON_DAYS
+                  value: "30"
+                - name: BETA
+                  value: "0.8"
+                - name: FIXTURE_PATH
+                  value: /opt/sim/fixture.csv
+              ports:
+                - containerPort: 6379
+                  name: gcs-server
+                - containerPort: 8265
+                  name: dashboard
+                - containerPort: 10001
+                  name: client
+              volumeMounts:
+                - name: sim
+                  mountPath: /opt/sim
+                - name: dshm
+                  mountPath: /dev/shm
+              resources:
+                requests:
+                  cpu: "200m"
+                  memory: 512Mi
+                limits:
+                  cpu: "1"
+                  memory: 1536Mi
+              securityContext:
+                runAsNonRoot: true
+                runAsUser: 1000
+                allowPrivilegeEscalation: false
+                capabilities:
+                  drop: ["ALL"]
+          volumes:
+            - name: sim
+              configMap:
+                name: fire-sim
+            - name: dshm
+              emptyDir:
+                medium: Memory
+                sizeLimit: 256Mi
+    workerGroupSpecs:
+      - replicas: 1
+        minReplicas: 1
+        maxReplicas: 1
+        groupName: sim-workers
+        rayStartParams:
+          num-cpus: "1"
+        template:
+          spec:
+            containers:
+              - name: ray-worker
+                image: rayproject/ray:2.40.0-py312-cpu
+                imagePullPolicy: IfNotPresent
+                volumeMounts:
+                  - name: dshm
+                    mountPath: /dev/shm
+                resources:
+                  requests:
+                    cpu: "100m"
+                    memory: 256Mi
+                  limits:
+                    cpu: "500m"
+                    memory: 768Mi
+                securityContext:
+                  runAsNonRoot: true
+                  runAsUser: 1000
+                  allowPrivilegeEscalation: false
+                  capabilities:
+                    drop: ["ALL"]
+            volumes:
+              - name: dshm
+                emptyDir:
+                  medium: Memory
+                  sizeLimit: 128Mi
+  submitterPodTemplate:
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: ray-job-submitter
+          image: rayproject/ray:2.40.0-py312-cpu
+          imagePullPolicy: IfNotPresent
+          resources:
+            requests:
+              cpu: "50m"
+              memory: 128Mi
+            limits:
+              cpu: "500m"
+              memory: 512Mi
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 1000
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop: ["ALL"]

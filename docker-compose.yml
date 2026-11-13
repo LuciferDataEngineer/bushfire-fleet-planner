@@ -1,0 +1,11 @@
+services:
+  pipeline:
+    build: .
+    environment:
+      SPARK_LOCAL_IP: 127.0.0.1
+      PYTHONPATH: /app/src
+    volumes:
+      - ./outputs:/app/outputs
+      - ./site:/app/site
+      - ./k8s/ray:/app/k8s/ray
+    command: python -m bushfire_fleet.pipeline

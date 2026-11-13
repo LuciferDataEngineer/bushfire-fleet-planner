@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: bushfire-ray
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/LuciferDataEngineer/bushfire-fleet-planner.git
+    targetRevision: main
+    path: k8s/ray
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: bushfire
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true

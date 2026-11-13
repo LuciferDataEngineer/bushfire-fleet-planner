@@ -1,0 +1,72 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+      - name: Install
+        run: pip install -r requirements.txt
+      - name: Lint
+        run: ruff check src tests scripts
+      - name: Unit tests
+        run: pytest -m "not contract"
+      - name: Pipeline
+        env:
+          PYTHONPATH: src
+          SPARK_LOCAL_IP: 127.0.0.1
+        run: python -m bushfire_fleet.pipeline
+      - name: Built-site checks
+        env:
+          PYTHONPATH: src
+        run: pytest -m contract
+      - name: Soda
+        env:
+          PYTHONPATH: src
+        run: soda scan -d fleet -c soda/configuration.yml soda/checks.yml
+      - name: Conftest
+        run: |
+          curl -fsSL -o /tmp/conftest.tar.gz https://github.com/open-policy-agent/conftest/releases/download/v0.61.2/conftest_0.61.2_Linux_x86_64.tar.gz
+          sudo tar -xzf /tmp/conftest.tar.gz -C /usr/local/bin conftest
+          conftest test k8s --policy policy
+      - name: Site matches the pipeline
+        run: git diff --exit-code -- site k8s/ray/fixture.csv k8s/ray/configmap.yaml
+
+  cluster:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: azure/setup-helm@v4
+        with:
+          version: v3.16.4
+      - uses: helm/kind-action@v1.12.0
+        with:
+          cluster_name: bushfire
+      - name: KubeRay and Argo CD
+        env:
+          GITHUB_SHA: ${{ github.sha }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+        run: bash ci/kind_ray_argocd.sh

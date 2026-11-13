@@ -1,0 +1,22 @@
+[project]
+name = "bushfire-fleet"
+version = "1.0.0"
+description = "Where to pre-position a limited aerial firefighting fleet for an Australian fire season."
+requires-python = ">=3.12"
+readme = "README.md"
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+markers = [
+  "contract: checks the built dashboard and needs the pipeline outputs",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+src = ["src", "tests", "scripts"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "W"]
+ignore = ["E501"]
