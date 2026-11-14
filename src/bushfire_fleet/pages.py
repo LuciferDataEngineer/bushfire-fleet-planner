@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import html
 from pathlib import Path
+from urllib.parse import quote
 
 from bushfire_fleet.charts import grouped_bars, horizontal_bars
 from bushfire_fleet.ffdi import danger_band
@@ -25,6 +26,16 @@ NAV = [
     ("fleet.html", "Fleet plan", "fleet"),
     ("week.html", "This week", "week"),
 ]
+# Inline so the browser does not fall back to requesting /favicon.ico.
+_ICON_SVG = (
+    "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'>"
+    "<path fill='#ff5d3a' d='M16.2 2c.6 5.4 6.4 7.6 7.6 13.2 1 4.6-.4 9-5.2 10.6-1.4.4-2.2-1.4-1.2-2.4 "
+    "1.2-1.2 1.6-2.8.6-4.4-1.2-2-3.4-2.6-3.2-5.8 0 2.6-2.2 4.2-3.2 6.2-1.2 2.4-.2 5.2 2 6.2-4.6-.6-8.2-5-7-9.8 "
+    "C8.2 11.2 12.4 6.6 16.2 2z'/>"
+    "<path fill='#ffb020' d='M16.4 16.2c2 1.6 2.8 3.2 2 5.2-.8 2-2.8 3-4.4 2-1.4-.8-2-2.6-1-4 .8-1.4 2.2-2.4 3.4-3.2z'/>"
+    "</svg>"
+)
+ICON_HREF = "data:image/svg+xml," + quote(_ICON_SVG, safe="")
 
 
 def write_site(facts: dict, site: Path) -> None:
@@ -276,6 +287,7 @@ def _page(active: str, title: str, body: str, when: str, tz: str) -> str:
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>{html.escape(title)} · Bushfire fleet planner</title>
+<link rel="icon" href="{ICON_HREF}" type="image/svg+xml"/>
 <link rel="stylesheet" href="assets/style.css"/>
 </head>
 <body>
@@ -302,11 +314,15 @@ def _banner(text: str) -> str:
 def _kpis(items: list[dict]) -> str:
     cards = []
     for item in items:
+        value = html.escape(item["value"])
+        # Long headlines use a smaller size so the whole string stays inside the card.
+        value_class = "value value-long" if len(item["value"]) > 16 else "value"
         cards.append(
-            "<article class=\"kpi\" style=\"--tone:{tone}\"><div class=\"value\">{value}</div>"
+            "<article class=\"kpi\" style=\"--tone:{tone}\"><div class=\"{value_class}\">{value}</div>"
             "<div class=\"label\">{label}</div><p class=\"detail\">{detail}</p></article>".format(
                 tone=_tone(item["tone"]),
-                value=html.escape(item["value"]),
+                value_class=value_class,
+                value=value,
                 label=html.escape(item["label"]),
                 detail=html.escape(item["detail"]),
             )

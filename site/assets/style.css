@@ -72,7 +72,15 @@ body {
   letter-spacing: -0.03em;
   line-height: 1.15;
   font-variant-numeric: tabular-nums;
-  overflow-wrap: anywhere;
+  white-space: normal;
+  overflow: visible;
+  text-overflow: clip;
+  overflow-wrap: break-word;
+}
+.kpi .value-long {
+  font-size: 1.12rem;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
 }
 .kpi .label { color: var(--muted); font-size: 0.86rem; margin-top: 6px; }
 .kpi .detail { margin: 8px 0 0; font-size: 0.92rem; }
@@ -157,6 +165,7 @@ body {
   .topbar-inner { flex-direction: column; align-items: flex-start; gap: 8px; }
   .kpis { grid-template-columns: 1fr 1fr; }
   .kpi .value { font-size: 1.35rem; }
+  .kpi .value-long { font-size: 1.12rem; }
 }
 @media (max-width: 520px) {
   .kpis { grid-template-columns: 1fr; }

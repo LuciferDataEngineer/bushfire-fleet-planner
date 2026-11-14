@@ -72,7 +72,12 @@ def build_copy(facts: dict) -> dict:
                     "high" if uplift >= 50 else "watch",
                 ),
                 _kpi("Busiest state this week", top_state, f"{pct(facts['top_heat_state']['share'])} of the satellite heat in this reading.", "watch"),
-                _kpi("Worst fire-weather region", _short(worst, 28), f"{facts['worst_region']['severe_days']:.1f} dangerous days a year, on average, from 2022 to 2025.", "high"),
+                _region_kpi(
+                    "Worst fire-weather region",
+                    worst,
+                    f"{facts['worst_region']['severe_days']:.1f} dangerous days a year, on average, from 2022 to 2025.",
+                    "high",
+                ),
             ],
             "charts": [
                 f"{worst} leads the country for how often fire weather turns dangerous",
@@ -97,7 +102,12 @@ def build_copy(facts: dict) -> dict:
                 _kpi("People in darker-than-average regions", people(facts["median_danger_population"]), f"{pct(facts['median_danger_pop_share'])} of the population lives where dangerous weather is above the national middle.", "watch"),
                 _kpi("Heat in those regions", pct(facts["median_danger_heat_share"]), "Share of this week's satellite heat in the above-average half of the map.", "high" if facts["median_danger_heat_share"] >= 50 else "watch"),
                 _kpi("Aircraft on the map", str(facts["n_aircraft"]), "Filled markers are the recommended bases. Hollow markers are the biggest-cities line-up where it differs.", "info"),
-                _kpi("Highest planning priority", _short(facts["top_plan_region"]["name"], 28), "The region that counts most once people, dangerous weather and this week's heat are looked at together.", "high"),
+                _region_kpi(
+                    "Highest planning priority",
+                    facts["top_plan_region"]["name"],
+                    "The region that counts most once people, dangerous weather and this week's heat are looked at together.",
+                    "high",
+                ),
             ],
             "charts": {
                 "weather": "Regions with the most dangerous fire weather in a typical year",
@@ -137,7 +147,12 @@ def build_copy(facts: dict) -> dict:
             "kpis": [
                 _kpi("Clearer heat detections", f"{facts['heat_events']:,}", "One count per patch of country per day, so the same fire is not counted once for every satellite pass.", "watch"),
                 _kpi("Busiest state", top_state, f"{facts['top_heat_state']['heat']:,} of those detections.", "high"),
-                _kpi("Busiest region", _short(busiest, 28), f"{facts['busiest_heat_region']['heat']:,} detections in {facts['busiest_heat_region']['state']}.", "high"),
+                _region_kpi(
+                    "Busiest region",
+                    busiest,
+                    f"{facts['busiest_heat_region']['heat']:,} detections in {facts['busiest_heat_region']['state']}.",
+                    "high",
+                ),
                 _kpi("Outlook window", f"{len(facts['forecast_days'])} days", f"{facts['forecast_days'][0]} to {facts['forecast_days'][-1]}, {facts['tz_label']}.", "info"),
                 _kpi(
                     "States heading for severe weather",
@@ -190,7 +205,29 @@ def _kpi(label: str, value: str, detail: str, tone: str) -> dict:
     return {"label": label, "value": value, "detail": detail, "tone": tone}
 
 
-def _short(text: str, limit: int) -> str:
-    if len(text) <= limit:
-        return text
-    return text[: limit - 1].rstrip() + "…"
+# Official region names are "State - place". The state is shortened so the
+# headline fits a KPI card; the full name stays in the card's sub-text.
+_STATE_PREFIXES = (
+    ("Western Australia - ", "WA "),
+    ("Northern Territory - ", "NT "),
+    ("South Australia - ", "SA "),
+    ("New South Wales - ", "NSW "),
+    ("Queensland - ", "Qld "),
+    ("Victoria - ", "Vic "),
+    ("Tasmania - ", "Tas "),
+    ("Australian Capital Territory", "ACT"),
+)
+
+
+def _place(name: str) -> str:
+    for prefix, short in _STATE_PREFIXES:
+        if name.startswith(prefix):
+            return (short + name[len(prefix):]).strip()
+    return name
+
+
+def _region_kpi(label: str, name: str, detail: str, tone: str) -> dict:
+    shown = _place(name)
+    if shown != name:
+        detail = f"{name}. {detail}"
+    return _kpi(label, shown, detail, tone)
